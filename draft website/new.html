@@ -44,6 +44,30 @@
            </div>
        </div>
     </section>
+  <section style="padding:200px;">
+      <div class="Holder">
+          <div class="element">
+              <input type="submit" class="button"id="get_location" name="get_location" value="get my location"></div>
+          <div class="element">
+              <div id="map">
+                  <iframe src="https://maps.google.co.uk?output=embed" frameborder="0" id="google_map" scrolling="no" marginheight="0" width="500px" height="500px" marginwidth="0" ></iframe>
+              </div>
+          </div>
+      </div>
+  </section>
+  <script>
+      var c=function(pos){
+          var lat =pos.coords.latitude,
+              long=pos.coords.longtitude,
+              coords=lat +', '+long;
+        document.getElementById('google_map').setAttribute('src', 'https://maps.google.co.uk?q='+ coords +'&z=60&output=embed');
+
+      }
+      document.getElementById('get_location').onclick=function(){
+          navigator.geolocation.getCurrentPosition(c);
+          return false;
+      }
+  </script>
     
     
 </body>
